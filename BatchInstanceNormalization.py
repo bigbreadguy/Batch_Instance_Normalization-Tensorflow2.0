@@ -19,13 +19,13 @@ class BatchInstanceNormalization(tf.keras.layers.Layer):
             name='gamma',
             shape=input_shape[-1:],
             initializer='ones',        
-            trainable=True)
+            trainable=False)
     
         self.beta = self.add_weight(
             name='beta',
             shape=input_shape[-1:],
             initializer='zeros',
-            trainable=True)
+            trainable=False)
   
     def call(self, x):
         batch_mean, batch_sigma = tf.nn.moments(x, axes=[0, 1, 2], keepdims=True)
